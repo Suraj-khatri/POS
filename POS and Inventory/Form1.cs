@@ -80,5 +80,17 @@ namespace POS_and_Inventory
             frm.LoadProduct();
             frm.Show();
         }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            frmStockIn frm = new frmStockIn();
+            frm.LoadProduct();
+            frm.ShowDialog();
+        }
     }
 }
