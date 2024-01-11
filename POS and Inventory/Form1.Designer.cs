@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnStockIn = new System.Windows.Forms.Button();
             this.button9 = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
             this.button8 = new System.Windows.Forms.Button();
@@ -38,13 +39,12 @@
             this.btnBrand = new System.Windows.Forms.Button();
             this.btnCategory = new System.Windows.Forms.Button();
             this.btnProduct = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnPos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.lblName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.btnStockIn = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
             this.panel2.Controls.Add(this.btnStockIn);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button7);
@@ -70,7 +70,7 @@
             this.panel2.Controls.Add(this.btnBrand);
             this.panel2.Controls.Add(this.btnCategory);
             this.panel2.Controls.Add(this.btnProduct);
-            this.panel2.Controls.Add(this.button2);
+            this.panel2.Controls.Add(this.btnPos);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Controls.Add(this.lblName);
@@ -80,6 +80,22 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(273, 558);
             this.panel2.TabIndex = 1;
+            // 
+            // btnStockIn
+            // 
+            this.btnStockIn.FlatAppearance.BorderSize = 0;
+            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockIn.ForeColor = System.Drawing.Color.White;
+            this.btnStockIn.Image = ((System.Drawing.Image)(resources.GetObject("btnStockIn.Image")));
+            this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockIn.Location = new System.Drawing.Point(11, 284);
+            this.btnStockIn.Name = "btnStockIn";
+            this.btnStockIn.Size = new System.Drawing.Size(249, 33);
+            this.btnStockIn.TabIndex = 12;
+            this.btnStockIn.Text = "Stock Entry";
+            this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStockIn.UseVisualStyleBackColor = true;
+            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
             // 
             // button9
             // 
@@ -190,20 +206,21 @@
             this.btnProduct.UseVisualStyleBackColor = true;
             this.btnProduct.Click += new System.EventHandler(this.btnProduct_Click);
             // 
-            // button2
+            // btnPos
             // 
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Image = ((System.Drawing.Image)(resources.GetObject("button2.Image")));
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(10, 213);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(249, 33);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Manage Sales";
-            this.button2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnPos.FlatAppearance.BorderSize = 0;
+            this.btnPos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPos.ForeColor = System.Drawing.Color.White;
+            this.btnPos.Image = ((System.Drawing.Image)(resources.GetObject("btnPos.Image")));
+            this.btnPos.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPos.Location = new System.Drawing.Point(10, 213);
+            this.btnPos.Name = "btnPos";
+            this.btnPos.Size = new System.Drawing.Size(249, 33);
+            this.btnPos.TabIndex = 4;
+            this.btnPos.Text = "POS";
+            this.btnPos.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnPos.UseVisualStyleBackColor = true;
+            this.btnPos.Click += new System.EventHandler(this.btnPos_Click);
             // 
             // button1
             // 
@@ -262,22 +279,6 @@
             this.panel3.Size = new System.Drawing.Size(925, 558);
             this.panel3.TabIndex = 2;
             // 
-            // btnStockIn
-            // 
-            this.btnStockIn.FlatAppearance.BorderSize = 0;
-            this.btnStockIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStockIn.ForeColor = System.Drawing.Color.White;
-            this.btnStockIn.Image = ((System.Drawing.Image)(resources.GetObject("btnStockIn.Image")));
-            this.btnStockIn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnStockIn.Location = new System.Drawing.Point(11, 284);
-            this.btnStockIn.Name = "btnStockIn";
-            this.btnStockIn.Size = new System.Drawing.Size(249, 33);
-            this.btnStockIn.TabIndex = 12;
-            this.btnStockIn.Text = "Stock In";
-            this.btnStockIn.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStockIn.UseVisualStyleBackColor = true;
-            this.btnStockIn.Click += new System.EventHandler(this.btnStockIn_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -311,7 +312,7 @@
         private System.Windows.Forms.Button btnBrand;
         private System.Windows.Forms.Button btnCategory;
         private System.Windows.Forms.Button btnProduct;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnPos;
         private System.Windows.Forms.Button button9;
         private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button button8;
