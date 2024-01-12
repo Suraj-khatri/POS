@@ -18,27 +18,38 @@ namespace POS_and_Inventory
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string stitle = "Simple POS System";
+
+        [Obsolete]
         public frmStockIn()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
-            
+            //frm = frmPos;
 
         }
         public void LoadStockIn()
         {
-            int i = 0;
-            dataGridView2.Rows.Clear();
-            cn.Open();
-            cm = new SqlCommand("select * from vwStockin where refno like '" + txtRefno.Text + "' and status like 'Pending' ", cn);
-            dr = cm.ExecuteReader();
-            while (dr.Read())
+            try
             {
-                i += 1;
-                dataGridView2.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+                dataGridView2.Rows.Clear();
+                int i = 0;
+                cn.Open();
+                cm = new SqlCommand("select * from vwStockin where refno like '" + txtRefno.Text + "' and status like 'Pending' ", cn);
+                dr = cm.ExecuteReader();
+                while (dr.Read())
+                {
+                    i++;
+                    dataGridView2.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
+                }
+                dr.Close();
+                cn.Close();
             }
-            dr.Close();
-            cn.Close();
+             catch(Exception ex)
+            {
+                cn.Close();
+                MessageBox.Show(ex.Message,stitle,MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
         }
 
         

@@ -53,7 +53,7 @@ namespace POS_and_Inventory
             {
                 if (slist.txtRefno.Text == string.Empty) { MessageBox.Show("Please enter Refno", stitle, MessageBoxButtons.OK, MessageBoxIcon.Warning); slist.txtRefno.Focus(); return; }
                 if (slist.txtStockInBy.Text == string.Empty) { MessageBox.Show("Please enter Stock By", stitle, MessageBoxButtons.OK, MessageBoxIcon.Warning); slist.txtStockInBy.Focus(); return; }
-                if (MessageBox.Show("Add this item?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Add this item?", stitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
 
