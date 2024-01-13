@@ -13,6 +13,8 @@ namespace POS_and_Inventory
 {
     public partial class frmPOS : Form
     {
+        string id;
+        string price;
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
@@ -26,6 +28,20 @@ namespace POS_and_Inventory
             cn = new SqlConnection(dbcon.MyConnection());
             this.KeyPreview = true;
         }
+
+        public void GetCartTotal()
+        {
+            double subTol = double.Parse(lblTotal.Text);
+            double discount = double.Parse(lblDiscount.Text);
+            double sales = double.Parse(lblTotal.Text);
+
+            double vat = sales * dbcon.GetVal();
+            double vatable = sales - vat;
+            lblTotal.Text = (sales- discount).ToString("#,##0.00");
+            lblVat.Text = vat.ToString();
+            lblVatable.Text = vatable.ToString("#,##0.00");
+        }
+
         private void GetTransNo()
         {
             try
@@ -110,17 +126,24 @@ namespace POS_and_Inventory
             {
                 dataGridView1.Rows.Clear();
                 int i = 0;
+                double total = 0;
+                double discount = 0;
                 cn.Open();
                 cm = new SqlCommand("select c.id,c.pcode,p.pdesc,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on c.pcode = p.pcode where transno like '"+lblTransno.Text+"' ", cn);
                 dr = cm.ExecuteReader();
                 while(dr.Read())
                 {
                     i++;
-                    
-                    dataGridView1.Rows.Add(i, dr["id"].ToString(),dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), dr["total"].ToString());
+                    total += double.Parse(dr["total"].ToString());
+                    discount += double.Parse(dr["disc"].ToString());
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(),dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
                 }
                 dr.Close ();
                 cn.Close();
+                lblTotal.Text = total.ToString("#,##0.00");
+                lblDiscount.Text = discount.ToString("#,##0.00");
+
+                GetCartTotal();
             }
             catch (Exception ex) 
             {
@@ -131,7 +154,20 @@ namespace POS_and_Inventory
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (colName == "Delete")
+            {
+               if(MessageBox.Show("Remove this item?",stitle,MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("delete from tblCart where id like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() +"' ",cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
 
+                    MessageBox.Show("Removed Successfully.",stitle,MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    LoadCart();
+                }
+            }
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
@@ -155,6 +191,49 @@ namespace POS_and_Inventory
         }
 
         private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if(lblTransno.Text == "00000000000000") { return; }
+            frmLookUp frm = new frmLookUp(this);
+            frm.LoadProduct(); 
+            frm.ShowDialog();
+        }
+
+        private void frmPOS_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDiscount_Click(object sender, EventArgs e)
+        {
+            frmDiscount frm = new frmDiscount(this);
+            frm.lblID.Text = id;
+            frm.txtPrice.Text = price;
+            frm.ShowDialog();
+
+        }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = dataGridView1.CurrentRow.Index;
+            id = dataGridView1[1,i].Value.ToString();
+            price = dataGridView1[3,i].Value.ToString();
+        }
+
+        //<info>
+        //  we have to enable timer first in property    
+        //</info>
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblTime.Text = DateTime.Now.ToString("hh:MM:ss tt");
+            lblDateInWord.Text = DateTime.Now.ToLongDateString();
+        }
+
+        private void btnSettle_Click(object sender, EventArgs e)
         {
 
         }

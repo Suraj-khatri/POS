@@ -46,7 +46,20 @@ namespace POS_and_Inventory
 
         private void txtQty_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if((e.KeyChar==13) && (txtQty.Text != string.Empty))
+            if (e.KeyChar == 46)
+            {
+                //accept character  
+            }
+            else if (e.KeyChar == 8)
+            {
+                //accept backspace
+            }
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57)) //0-9
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar==13) && (txtQty.Text != string.Empty))
             {
                 cn.Open();
                 cm = new SqlCommand("insert into tblCart (transno,pcode,price,qty,sdate) values(@transno,@pcode,@price,@qty,@sdate)",cn);

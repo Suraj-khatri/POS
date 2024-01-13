@@ -199,5 +199,10 @@ namespace POS_and_Inventory
                 e.Handled = true;
             }
         }
+
+        private void txtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
