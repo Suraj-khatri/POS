@@ -33,11 +33,11 @@
             // 
             // txtQty
             // 
-            this.txtQty.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtQty.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.txtQty.Font = new System.Drawing.Font("Consolas", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQty.Location = new System.Drawing.Point(0, 0);
             this.txtQty.Name = "txtQty";
-            this.txtQty.Size = new System.Drawing.Size(266, 64);
+            this.txtQty.Size = new System.Drawing.Size(335, 64);
             this.txtQty.TabIndex = 0;
             this.txtQty.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQty.TextChanged += new System.EventHandler(this.txtQty_TextChanged);
@@ -47,7 +47,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(266, 62);
+            this.ClientSize = new System.Drawing.Size(335, 64);
             this.Controls.Add(this.txtQty);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;

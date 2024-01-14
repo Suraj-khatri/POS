@@ -166,6 +166,18 @@
     <Compile Include="frmSettle.Designer.cs">
       <DependentUpon>frmSettle.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSoldItems.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSoldItems.Designer.cs">
+      <DependentUpon>frmSoldItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSoldReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSoldReport.Designer.cs">
+      <DependentUpon>frmSoldReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmStockIn.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -217,6 +229,12 @@
     <EmbeddedResource Include="frmSettle.resx">
       <DependentUpon>frmSettle.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSoldItems.resx">
+      <DependentUpon>frmSoldItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSoldReport.resx">
+      <DependentUpon>frmSoldReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmStockIn.resx">
       <DependentUpon>frmStockIn.cs</DependentUpon>
     </EmbeddedResource>
@@ -229,7 +247,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report1.rdlc" />
     <EmbeddedResource Include="salesRep.rdlc" />
+    <EmbeddedResource Include="soldItemsReport.rdlc" />
     <None Include="DataSet1.xsc">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>

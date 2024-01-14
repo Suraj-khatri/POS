@@ -257,5 +257,11 @@ namespace POS_and_Inventory
         {
             this.Close();
         }
+
+        private void btnSales_Click(object sender, EventArgs e)
+        {
+            frmSoldItems frm = new frmSoldItems();
+            frm.ShowDialog();
+        }
     }
 }
