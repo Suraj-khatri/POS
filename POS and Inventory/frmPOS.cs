@@ -46,7 +46,7 @@ namespace POS_and_Inventory
             lblVatable.Text = vatable.ToString("#,##0.00");
         }
 
-        private void GetTransNo()
+        public void GetTransNo()
         {
             try
             {
@@ -134,14 +134,14 @@ namespace POS_and_Inventory
                 double total = 0;
                 double discount = 0;
                 cn.Open();
-                cm = new SqlCommand("select c.id,c.pcode,p.pdesc,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on c.pcode = p.pcode where transno like '"+lblTransno.Text+"' ", cn);
+                cm = new SqlCommand("select c.id,c.pcode,p.pdesc,c.price,c.qty,c.disc,c.total from tblCart as c inner join tblProduct as p on c.pcode = p.pcode where transno like '"+lblTransno.Text+"' and status like 'Pending' ", cn);
                 dr = cm.ExecuteReader();
                 while(dr.Read())
                 {
                     i++;
                     total += double.Parse(dr["total"].ToString());
                     discount += double.Parse(dr["disc"].ToString());
-                    dataGridView1.Rows.Add(i, dr["id"].ToString(),dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
+                    dataGridView1.Rows.Add(i, dr["id"].ToString(), dr["pcode"],dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
                     hasrecord = true;
                 }
                 dr.Close ();
@@ -246,7 +246,9 @@ namespace POS_and_Inventory
 
         private void btnSettle_Click(object sender, EventArgs e)
         {
-            frmSettle frm = new frmSettle();
+            frmSettle frm = new frmSettle(this);
+            frm.txtCash.Focus();
+            frm.txtCash.Select();
             frm.txtSale.Text = lblDisplayTotal.Text;
             frm.ShowDialog();
         }
