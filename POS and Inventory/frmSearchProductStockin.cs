@@ -14,11 +14,13 @@ namespace POS_and_Inventory
     public partial class frmSearchProductStockin : Form
     {
         SqlConnection cn = new SqlConnection();
-        SqlCommand cm = new SqlCommand();
+        SqlCommand cm;
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string stitle = "Simple POS System";
         frmStockIn slist;
+
+        [Obsolete]
         public frmSearchProductStockin(frmStockIn flist)
         {
             InitializeComponent();
@@ -62,10 +64,10 @@ namespace POS_and_Inventory
                     cm.Parameters.AddWithValue("@pcode", dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString());
                     cm.Parameters.AddWithValue("@sdate", slist.dt1.Value);
                     cm.Parameters.AddWithValue("@stockinby", slist.txtStockInBy.Text);
-                    cm.ExecuteReader();
-                    cn.Close();
+                    cm.ExecuteNonQuery();
 
-                    MessageBox.Show("Successfully Added!", stitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cn.Close();
+                    MessageBox.Show("Added Successfully!",stitle,MessageBoxButtons.OK,MessageBoxIcon.Information);
                     slist.LoadStockIn();
                 }
             }

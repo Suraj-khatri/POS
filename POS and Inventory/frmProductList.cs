@@ -17,6 +17,7 @@ namespace POS_and_Inventory
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
+        string stitle = "Simple POS System";
         public frmProductList()
         {
             InitializeComponent();
@@ -57,6 +58,7 @@ namespace POS_and_Inventory
                 i++;
                 dataGridView1.Rows.Add(i, dr[0].ToString(), dr[1].ToString(), dr[2].ToString(), dr[3].ToString(), dr[4].ToString(), dr[5].ToString(), dr[6].ToString());
             }
+            dr.Close();
             cn.Close();
         }
 
@@ -85,7 +87,7 @@ namespace POS_and_Inventory
             }
             else if (colName == "Delete")
             {
-                if (MessageBox.Show("Are you sure you want to delete this Record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Are you sure you want to delete this Record?",stitle, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     cn.Open();
                     cm = new SqlCommand("delete from tblProduct where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);

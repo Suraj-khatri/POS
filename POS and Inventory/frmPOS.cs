@@ -27,17 +27,21 @@ namespace POS_and_Inventory
             lblDate.Text = DateTime.Now.ToLongDateString();
             cn = new SqlConnection(dbcon.MyConnection());
             this.KeyPreview = true;
+            
         }
 
         public void GetCartTotal()
         {
-            double subTol = double.Parse(lblTotal.Text);
+            //double subTol = double.Parse(lblTotal.Text);
             double discount = double.Parse(lblDiscount.Text);
             double sales = double.Parse(lblTotal.Text);
 
             double vat = sales * dbcon.GetVal();
-            double vatable = sales - vat;
-            lblTotal.Text = (sales- discount).ToString("#,##0.00");
+            double vatable = sales + vat;
+            lblTotal.Text = sales.ToString("#,##0.00");
+            //lblTotal.Text = (sales- discount).ToString("#,##0.00");
+            //lblTotal.Text = (sales- discount).ToString("#,##0.00");
+            lblDisplayTotal.Text = (sales- discount).ToString("#,##0.00");
             lblVat.Text = vat.ToString();
             lblVatable.Text = vatable.ToString("#,##0.00");
         }
@@ -124,6 +128,7 @@ namespace POS_and_Inventory
         {
             try
             {
+                bool hasrecord = false;
                 dataGridView1.Rows.Clear();
                 int i = 0;
                 double total = 0;
@@ -137,13 +142,17 @@ namespace POS_and_Inventory
                     total += double.Parse(dr["total"].ToString());
                     discount += double.Parse(dr["disc"].ToString());
                     dataGridView1.Rows.Add(i, dr["id"].ToString(),dr["pdesc"].ToString(), dr["price"].ToString(), dr["qty"].ToString(), dr["disc"].ToString(), double.Parse(dr["total"].ToString()).ToString("#,##0.00"));
+                    hasrecord = true;
                 }
                 dr.Close ();
                 cn.Close();
                 lblTotal.Text = total.ToString("#,##0.00");
+               // lblDisplayTotal.Text = total.ToString("#,##0.00");
                 lblDiscount.Text = discount.ToString("#,##0.00");
 
                 GetCartTotal();
+
+                if(hasrecord) { btnSettle.Enabled = true; btnDiscount.Enabled = true; } else { btnSettle.Enabled = false; btnDiscount.Enabled = false; }
             }
             catch (Exception ex) 
             {
@@ -210,7 +219,9 @@ namespace POS_and_Inventory
 
         private void btnDiscount_Click(object sender, EventArgs e)
         {
+
             frmDiscount frm = new frmDiscount(this);
+            
             frm.lblID.Text = id;
             frm.txtPrice.Text = price;
             frm.ShowDialog();
@@ -229,13 +240,20 @@ namespace POS_and_Inventory
         //</info>
         private void timer1_Tick(object sender, EventArgs e)
         {
-            lblTime.Text = DateTime.Now.ToString("hh:MM:ss tt");
+            lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
             lblDateInWord.Text = DateTime.Now.ToLongDateString();
         }
 
         private void btnSettle_Click(object sender, EventArgs e)
         {
+            frmSettle frm = new frmSettle();
+            frm.txtSale.Text = lblDisplayTotal.Text;
+            frm.ShowDialog();
+        }
 
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -34,7 +34,9 @@ namespace POS_and_Inventory
                 dataGridView2.Rows.Clear();
                 int i = 0;
                 cn.Open();
-                cm = new SqlCommand("select * from vwStockin where refno like '" + txtRefno.Text + "' and status like 'Pending' ", cn);
+                cm = new SqlCommand("select s.id,s.refno,s.pcode,p.pdesc,s.qty,s.sdate,s.stockinby,s.status from tblProduct as p inner join tblStockIn as s on s.pcode = p.pcode where s.refno like '" + txtRefno.Text + "' and s.status like 'Pending' ", cn);
+
+                //cm = new SqlCommand("select * from vwStockin where refno like '" + txtRefno.Text + "' and status like 'Pending' ", cn);
                 dr = cm.ExecuteReader();
                 while (dr.Read())
                 {
@@ -68,7 +70,8 @@ namespace POS_and_Inventory
             int i = 0;
             dataGridView1.Rows.Clear();
             cn.Open();
-            cm = new SqlCommand("select * from vwStockin where cast(sdate as date) between '"+date1.Value.ToShortDateString()+"' and '"+date2.Value.ToShortDateString()+"' and status like 'Done' ", cn);
+            cm = new SqlCommand("select s.id,s.refno,s.pcode,p.pdesc,s.qty,s.sdate,s.stockinby from tblProduct as p inner join tblStockIn as s on s.pcode = p.pcode where cast(sdate as date) between '" + date1.Value.ToShortDateString() + "' and '" + date2.Value.ToShortDateString() + "' and status like 'Done' ", cn);
+            //cm = new SqlCommand("select * from tblstockin where cast(sdate as date) between '"+date1.Value.ToShortDateString()+"' and '"+date2.Value.ToShortDateString()+"' and status like 'Done' ", cn);
             dr = cm.ExecuteReader();
             while (dr.Read())
             {
