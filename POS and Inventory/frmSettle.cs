@@ -150,6 +150,11 @@ namespace POS_and_Inventory
                     cn.Close();
 
                 }
+
+                frmReceipt frm = new frmReceipt(fpos);
+                frm.LoadReport(txtCash.Text,txtChange.Text);
+                frm.ShowDialog();
+
                 MessageBox.Show("Payment Successfully Saved", stitle, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 fpos.GetTransNo();
                 fpos.LoadCart();
@@ -158,9 +163,9 @@ namespace POS_and_Inventory
             }
             catch(Exception ex)
             {
-
+                MessageBox.Show("Insufficient Amount.Please enter the correct Amount.", stitle, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
