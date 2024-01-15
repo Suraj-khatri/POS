@@ -83,7 +83,11 @@ namespace POS_and_Inventory
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            frmUserAccount frm = new frmUserAccount();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
 
         private void btnStockIn_Click(object sender, EventArgs e)
@@ -96,8 +100,8 @@ namespace POS_and_Inventory
         [Obsolete]
         private void btnPos_Click(object sender, EventArgs e)
         {
-            frmPOS frm = new frmPOS();
-            frm.ShowDialog();
+            //frmPOS frm = new frmPOS();
+            //frm.ShowDialog();
         }
     }
 }

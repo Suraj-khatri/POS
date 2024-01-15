@@ -160,6 +160,12 @@
     <Compile Include="frmSearchProductStockin.Designer.cs">
       <DependentUpon>frmSearchProductStockin.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSecurity.Designer.cs">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSettle.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,12 @@
     </Compile>
     <Compile Include="frmStockIn.Designer.cs">
       <DependentUpon>frmStockIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUserAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUserAccount.Designer.cs">
+      <DependentUpon>frmUserAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -226,6 +238,9 @@
     <EmbeddedResource Include="frmSearchProductStockin.resx">
       <DependentUpon>frmSearchProductStockin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmSecurity.resx">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmSettle.resx">
       <DependentUpon>frmSettle.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,6 +252,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmStockIn.resx">
       <DependentUpon>frmStockIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUserAccount.resx">
+      <DependentUpon>frmUserAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -42,9 +42,9 @@
             this.btnPos = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.lblName = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.lblUser = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -62,6 +62,7 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.panel2.Controls.Add(this.lblUser);
             this.panel2.Controls.Add(this.btnStockIn);
             this.panel2.Controls.Add(this.button9);
             this.panel2.Controls.Add(this.button7);
@@ -73,7 +74,6 @@
             this.panel2.Controls.Add(this.btnPos);
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.lblName);
             this.panel2.Controls.Add(this.pictureBox1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 40);
@@ -240,26 +240,14 @@
             // 
             // label1
             // 
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(7, 133);
+            this.label1.ForeColor = System.Drawing.Color.Teal;
+            this.label1.Location = new System.Drawing.Point(3, 133);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(239, 22);
+            this.label1.Size = new System.Drawing.Size(267, 22);
             this.label1.TabIndex = 2;
             this.label1.Text = "Administrator";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // lblName
-            // 
-            this.lblName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(158)))), ((int)(((byte)(132)))));
-            this.lblName.Location = new System.Drawing.Point(7, 110);
-            this.lblName.Name = "lblName";
-            this.lblName.Size = new System.Drawing.Size(239, 33);
-            this.lblName.TabIndex = 1;
-            this.lblName.Text = "Username";
-            this.lblName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblName.Click += new System.EventHandler(this.lblName_Click);
             // 
             // pictureBox1
             // 
@@ -279,6 +267,17 @@
             this.panel3.Size = new System.Drawing.Size(925, 558);
             this.panel3.TabIndex = 2;
             // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(109, 112);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(0, 21);
+            this.lblUser.TabIndex = 13;
+            this.lblUser.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -295,6 +294,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
@@ -305,7 +305,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label lblName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button5;
@@ -318,6 +317,7 @@
         private System.Windows.Forms.Button button8;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button btnStockIn;
+        public System.Windows.Forms.Label lblUser;
     }
 }
 

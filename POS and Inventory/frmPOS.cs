@@ -20,10 +20,13 @@ namespace POS_and_Inventory
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string stitle = "Simple POS System";
+        frmSecurity f;
         [Obsolete]
-        public frmPOS()
+        public frmPOS(frmSecurity frm)
         {
             InitializeComponent();
+            f = frm;
+            
             lblDate.Text = DateTime.Now.ToLongDateString();
             cn = new SqlConnection(dbcon.MyConnection());
             this.KeyPreview = true;

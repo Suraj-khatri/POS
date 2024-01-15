@@ -49,6 +49,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.lblUser = new System.Windows.Forms.Label();
             this.lblDisplayTotal = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.txtSearch = new MetroFramework.Controls.MetroTextBox();
@@ -280,7 +281,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkCyan;
-            this.label1.Location = new System.Drawing.Point(88, 23);
+            this.label1.Location = new System.Drawing.Point(88, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 20);
             this.label1.TabIndex = 1;
@@ -300,6 +301,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(37)))), ((int)(((byte)(37)))), ((int)(((byte)(38)))));
+            this.panel6.Controls.Add(this.lblUser);
             this.panel6.Controls.Add(this.lblDisplayTotal);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.pictureBox1);
@@ -309,6 +311,15 @@
             this.panel6.Size = new System.Drawing.Size(1198, 72);
             this.panel6.TabIndex = 3;
             this.panel6.Paint += new System.Windows.Forms.PaintEventHandler(this.panel6_Paint);
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.BackColor = System.Drawing.Color.White;
+            this.lblUser.Location = new System.Drawing.Point(104, 38);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(0, 13);
+            this.lblUser.TabIndex = 2;
             // 
             // lblDisplayTotal
             // 
@@ -757,5 +768,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn disc;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
         private System.Windows.Forms.DataGridViewImageColumn Delete;
+        public System.Windows.Forms.Label lblUser;
     }
 }
